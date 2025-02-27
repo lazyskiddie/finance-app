@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # financetalk
+=======
+# financetalk07
+>>>>>>> f04fa7b (financetalk07)
 
 A new Flutter project.
 
