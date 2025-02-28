@@ -1,1 +1,2 @@
 # finance-app
+financetalk is AI based platform for the financial knowledge and help to find out the way to how to invest you money so chances of get in loss will be minimize and also provide you financers who are best in their field so they can also gide you about managing you moey or getting some finance knowledge from the finance experts which people can implement in their life to achive the financial independenc and make their life beautiful.
