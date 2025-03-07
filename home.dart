@@ -1,3 +1,5 @@
+import 'package:financetalk07/News.dart';
+import 'package:financetalk07/Save_and_invest.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +25,13 @@ class FinanceTalkHome extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.person_outline),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) =>  Profilescreen(),
+                )
+              );
+            },
           ),
         ],
         backgroundColor: Colors.white,
@@ -51,7 +59,13 @@ class FinanceTalkHome extends StatelessWidget {
                 SizedBox(width: 10),
                 IconButton(
                   icon: Icon(Icons.notifications_none),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => NotificationScreen(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -81,9 +95,36 @@ class FinanceTalkHome extends StatelessWidget {
               mainAxisSpacing: 10,
               children: [
                 financeFeatureTile(Icons.memory, 'Ask with AI'),
-                financeFeatureTile(Icons.favorite, 'Finance Planner'),
-                financeFeatureTile(Icons.newspaper, 'News'),
-                financeFeatureTile(Icons.savings, 'Save & Invest'),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => FinancePlannerPage(),
+                      ),
+                    );
+                  },
+                  child: Text('Finance Planner'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => NewsPage(),
+                      ),
+                    );
+                  },
+                  child: Text('News'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>   SaveInvestPage(),
+                      ),
+                    );
+                  },
+                  child: Text('Save and Invest'),
+                ),
                 financeFeatureTile(Icons.beach_access, 'Retirements'),
                 financeFeatureTile(Icons.account_balance_wallet, 'Wallet'),
               ],
@@ -97,7 +138,13 @@ class FinanceTalkHome extends StatelessWidget {
               children: [
                 ChatWidget(name: 'Taxak', status: 'online'),
                 ChatWidget(name: 'John', status: '19 min ago'),
-                TextButton(onPressed: () {}, child: Text('+ more chats')),
+                TextButton(onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ChatScreen(),
+                    ),
+                  );
+                }, child: Text('+ more chats')),
               ],
             ),
           ),
@@ -168,6 +215,83 @@ class ChatWidget extends StatelessWidget {
       ),
       title: Text(name),
       subtitle: Text(status),
+    );
+  }
+}
+
+class Profilescreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      body: Center(
+        child: Text('Profile screen'),
+      ),
+    );
+  }
+}
+
+class NotificationScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Notifications'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('Notification $index'),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ChatScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Chat'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      body: Center(
+        child: Text('Chat screen'),
+      ),
+    );
+  }
+}
+
+class FinancePlannerPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Finance Planner'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      body: Center(
+        child: Text('Finance planner page'),
+      ),
     );
   }
 }
