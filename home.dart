@@ -2,6 +2,7 @@ import 'package:financetalk07/News.dart';
 import 'package:financetalk07/Save_and_invest.dart';
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(FinanceTalkApp());
 }
