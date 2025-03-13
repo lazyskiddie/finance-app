@@ -25,6 +25,12 @@ class UserProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Finance talk'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         actions: [
           PopupMenuButton<String>(
             onSelected: (String result) {
