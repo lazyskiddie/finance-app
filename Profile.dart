@@ -21,6 +21,14 @@ class FinanceTalkApp extends StatelessWidget {
 
 class UserProfileScreen extends StatelessWidget {
   @override
+  _UserProfileScreenState createState() => _UserProfileScreenState();
+}
+class _UserProfileScreenState extends State<UserProfileScreen> {
+  String name = 'Sandeep Singh';
+  String age = '20';
+  String occupation = 'Student';
+  
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
