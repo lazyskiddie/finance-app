@@ -134,7 +134,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               icon: Icons.language_outlined,
             ),
             OptionTile(
-              title: 'Support',
+              title: 'FAQs',
               subtitle: 'Help center',
               icon: Icons.help_outline,
             ),
@@ -270,32 +270,49 @@ class AboutUsScreen extends StatelessWidget {
             children: [
               Text(
                 'About FinanceTalk',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               Text(
                 'At FinanceTalk, we believe that financial literacy is the key to unlocking financial independence and achieving your long-term goals. Our app is designed to simplify complex financial concepts and empower individuals to take control of their money, investments, and financial future.',
+                style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               Text(
                 'Whether you\'re a beginner looking to understand the basics of personal finance or an experienced investor seeking the latest market insights, FinanceTalk provides easy-to-understand guidance and expert advice tailored to your unique financial situation.',
+                style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               Text(
                 'Our mission is to bridge the financial literacy gap by offering personalized, user-friendly tools that help you:',
+                style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 10),
-              Text('• Track Your Finances: Monitor your expenses, income, and savings effortlessly.'),
-              Text('• Grow Your Wealth: Receive curated investment suggestions based on your goals and risk tolerance.'),
-              Text('• Stay Informed: Access the latest market news, insights, and trends to make informed decisions.'),
-              Text('• Secure Your Future: Plan for long-term goals like retirement, homeownership, or education with our financial planning tools.'),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
+              Text(
+                '• Track Your Finances: Monitor your expenses, income, and savings effortlessly.',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text(
+                '• Grow Your Wealth: Receive curated investment suggestions based on your goals and risk tolerance.',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text(
+                '• Stay Informed: Access the latest market news, insights, and trends to make informed decisions.',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text(
+                '• Secure Your Future: Plan for long-term goals like retirement, homeownership, or education with our financial planning tools.',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 15),
               Text(
                 'We are passionate about creating a platform where everyone, regardless of their financial knowledge, can learn, grow, and succeed in their financial journey. At FinanceTalk, we’re not just helping you manage your money—we’re helping you achieve financial freedom.',
+                style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               Text(
                 'Join us in making smart financial decisions today for a better tomorrow!',
+                style: TextStyle(fontSize: 18),
               ),
             ],
           ),
