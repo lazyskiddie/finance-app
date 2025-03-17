@@ -50,14 +50,20 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   MaterialPageRoute(builder: (context) => AboutUsScreen()),
                 );
               } else if (result == 'Contact Us') {
-                // Handle 'Contact Us'
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ContactUsScreen()),
+                );
               } else if (result == 'Privacy Policy') {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => PrivacyPolicyScreen()),
                 );
-              } else if (result == 'Dark Mode') {
-                // Handle 'Dark Mode'
+              } else if (result == 'FAQs') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FAQScreen()),
+                );
               }
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
@@ -74,8 +80,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 child: Text('Privacy Policy'),
               ),
               const PopupMenuItem<String>(
-                value: 'Dark Mode',
-                child: Text('Dark Mode'),
+                value: 'FAQs',
+                child: Text('FAQs'),
               ),
             ],
           ),
@@ -140,6 +146,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               title: 'FAQs',
               subtitle: 'Help center',
               icon: Icons.help_outline,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FAQScreen()),
+                );
+              },
             ),
           ],
         ),
@@ -152,12 +164,14 @@ class OptionTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
+  final VoidCallback? onTap;
 
   const OptionTile({
     Key? key,
     required this.title,
     required this.subtitle,
     required this.icon,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -167,9 +181,7 @@ class OptionTile extends StatelessWidget {
         leading: Icon(icon),
         title: Text(title),
         subtitle: Text(subtitle),
-        onTap: () {
-          // Handle option tap
-        },
+        onTap: onTap,
       ),
     );
   }
@@ -257,6 +269,43 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 }
 
+// FAQ Screen with Expandable Questions
+class FAQScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('FAQs'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            ExpansionTile(
+              title: Text('How is this app helpful?'),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'FinanceTalk helps users, especially beginners, make informed financial decisions by simplifying personal finance and investment options. It provides tools and knowledge to improve financial literacy, making it easier to manage money and investments effectively.',
+                  ),
+                ),
+              ],
+            ),
+            // Add more FAQ items here
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 // Privacy Policy Screen
 class PrivacyPolicyScreen extends StatelessWidget {
   @override
@@ -272,10 +321,15 @@ class PrivacyPolicyScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Last updated: [Insert Date]',
+                'Privacy Policy for Finance Talk',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
+              Text(
+                'Last updated: March 15, 2025',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
               Text(
                 'Finance Talk ("we," "our," or "us") operates the Finance Talk mobile application (the "App"). This Privacy Policy explains how we collect, use, and share your information when you use our App.',
                 style: TextStyle(fontSize: 16),
@@ -287,27 +341,146 @@ class PrivacyPolicyScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                '1. Information We Collect',
+                'Information We Collect',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               Text(
-                '1.1 Personal Information\nWe may collect personally identifiable information that you provide to us directly, such as:\n\n• Name\n• Email address\n• Contact details\n• Age, gender, and occupation (if provided voluntarily)',
+                '1.1 Personal Information',
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 15),
               Text(
-                '1.2 Non-Personal Information\nWe may also collect non-personal information automatically, such as:\n\n• Device information (e.g., IP address, device model, operating system)\n• App usage data (e.g., pages viewed, actions taken in the app)\n• Log data (e.g., crash reports, app diagnostics)',
+                'We may collect personally identifiable information that you provide to us directly, such as:',
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 15),
               Text(
-                '1.3 Cookies and Tracking Technologies\nWe may use cookies and similar tracking technologies to track your activity on the App. Cookies are small data files stored on your device to enhance your experience. You can choose to disable cookies through your device settings, but this may affect the functionality of the App.',
+                '• Name',
                 style: TextStyle(fontSize: 16),
               ),
-              // Continue with the rest of the privacy policy text...
+              SizedBox(height: 15),
+              Text(
+                '• Email address',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                '• Contact details',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                '• Age, gender and occupation (if provided voluntarily)',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'This information is used to provide you with personalized services and respond to your inquiries.',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                '1.2 Non-Personal Information',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'We may also collect non-personal information automatically such as:',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 20),
+              Text(
+                '• Device information (e.g., IP address, device model, operating system)',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                '• App Usage data (e.g., pages viewed, action taken in the App)',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                '• Log data (e.g., crash reports, app diagnostics)',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'This information helps us improve the App and provide a better user experience.',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                '1.3 Cookies and Tracking Technologies',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'We may use cookies and similar tracking technologies to track your activity on the App. Cookies are small data files stored on your device to enhance your experience. You can choose to disable cookies through your device settings, but this may affect the functionality of the App.',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'How We Use Your Information',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'We use the information we collect in the following ways:',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'We do not sell or share your personal information with third parties for their marketing purposes. Your information is only shared as described in this Privacy Policy or with your consent.',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Contact Us',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'If you have any questions or concerns about our Privacy Policy, please contact us at',
+                style: TextStyle(fontSize: 16),
+              ),
+              // More Privacy Policy content
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+// Contact Us Screen
+class ContactUsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Contact Us'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Contact us at:',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            SizedBox(height: 10),
+            Text('Email: sandeepsingh08550@gmail.com'),
+            Text('Phone: +91-93599XXXXX'),
+            SizedBox(height: 20),
+            Text('Address:',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            SizedBox(height: 10),
+            Text('UKA Tarsadia University'),
+            Text('Bardoli, Gujarat, India'),
+          ],
         ),
       ),
     );
@@ -320,7 +493,7 @@ class AboutUsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About Us'),
+        title: const Text('About Us'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -328,19 +501,52 @@ class AboutUsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Welcome to Finance Talk!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              'About Finance Talk',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Text(
-              'At Finance Talk, we aim to simplify personal finance and investment decisions for everyone, especially those who are new to the financial world. Whether you are a beginner or an experienced investor, our mission is to provide you with the tools and knowledge you need to achieve financial independence.',
+              'At FinanceTalk, we believe that financial literacy is the key to unlocking financial independence and achieving your long-term goals. Our app is designed to simplify complex financial concepts and empower individuals to take control of their money, investments, and financial future.',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Text(
-              'We believe that everyone should have access to accurate and reliable financial advice, regardless of their background or experience. That\'s why we created this app – to help you make informed financial decisions and grow your wealth over time.',
+              'Whether you are a beginner looking to understand the basics of personal finance or an experienced investor seeking the latest market insights, FinanceTalk provides easy-to-understand guidance and expert advice tailored to your unique financial situation.',
               style: TextStyle(fontSize: 16),
             ),
+            SizedBox(height: 10),
+            Text(
+              'Our mission is to bridge the financial literacy gap by offering personalized, user-friendly tools that help you:',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 10),
+            Text(
+                '• Track Your Finances: Monitor your expenses, income, and savings effortlessly.',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text(
+                '• Grow Your Wealth: Receive curated investment suggestions based on your goals and risk tolerance.',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text(
+                '• Stay Informed: Access the latest market news, insights, and trends to make informed decisions.',
+                style: TextStyle(fontSize: 18),
+              ),
+              /*Text(
+                '• Secure Your Future: Plan for long-term goals like retirement, homeownership, or education with our financial planning tools.',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'We are passionate about creating a platform where everyone, regardless of their financial knowledge, can learn, grow, and succeed in their financial journey. At FinanceTalk, we’re not just helping you manage your money—we’re helping you achieve financial freedom.',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'Join us in making smart financial decisions today for a better tomorrow!',
+                style: TextStyle(fontSize: 18),
+              ),*/
+            // More About Us content
           ],
         ),
       ),
