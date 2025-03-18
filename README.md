@@ -1,4 +1,4 @@
-# financetalk07
+# financetalk
 
 A new Flutter project.
 
