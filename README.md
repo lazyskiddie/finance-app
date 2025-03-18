@@ -1,2 +1,16 @@
-# finance-app
-financetalk is AI based platform for the financial knowledge and help to find out the way to how to invest you money so chances of get in loss will be minimize and also provide you financers who are best in their field so they can also gide you about managing you moey or getting some finance knowledge from the finance experts which people can implement in their life to achive the financial independenc and make their life beautiful.
+# financetalk07
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
