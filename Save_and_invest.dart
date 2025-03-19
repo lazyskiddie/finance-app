@@ -22,6 +22,7 @@ class SaveInvestPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Save & Invest'),
         backgroundColor: Colors.grey[400],
+        leading: BackButton(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -112,7 +113,10 @@ class StockMarketPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Stock Market')),
+      appBar: AppBar(
+        title: const Text('Stock Market'),
+        leading: BackButton(),
+        ),
       body: const Center(child: Text('Stock Market Information')),
     );
   }
@@ -122,7 +126,10 @@ class CryptoCurrencyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Crypto Currency')),
+      appBar: AppBar(
+        title: const Text('Crypto Currency'),
+        leading: BackButton(),
+        ),
       body: const Center(child: Text('Crypto Currency Information')),
     );
   }
@@ -132,7 +139,10 @@ class MutualFundsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Mutual Funds')),
+      appBar: AppBar(
+        title: const Text('Mutual Funds'),
+        leading: BackButton(),
+        ),
       body: const Center(child: Text('Mutual Funds Information')),
     );
   }
@@ -142,7 +152,10 @@ class FDAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('FD Account')),
+      appBar: AppBar(
+        title: const Text('FD Account'),
+        leading: BackButton(),
+        ),
       body: const Center(child: Text('Account')),
     );
   }
@@ -152,7 +165,10 @@ class CorporateBondsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Corporate Bonds')),
+      appBar: AppBar(
+        title: const Text('Corporate Bonds'),
+        leading: BackButton(),
+        ),
       body: const Center(child: Text('Corporate Bonds Information')),
     );
   }
@@ -162,7 +178,10 @@ class IPOPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('IPO')),
+      appBar: AppBar(
+        title: const Text('IPO'),
+        leading: BackButton(),
+        ),
       body: const Center(child: Text('IPO Information')),
     );
   }
