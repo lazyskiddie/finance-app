@@ -9,7 +9,7 @@ class ExpenseCalculatorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Monthly Expense Calculator',
-      home: ExpenseCalculatorScreen(),
+      home: ExpenseCalculatorScreen(), // Your existing screen
     );
   }
 }
@@ -70,6 +70,16 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Monthly Expense Calculator"),
+        backgroundColor: Colors.grey[400],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Pops the current screen and goes back
+          },
+        ),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
