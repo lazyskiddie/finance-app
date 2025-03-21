@@ -52,8 +52,14 @@ class _BankAccountHomeState extends State<BankAccountHome> {
           'Accounts',
           style: TextStyle(color: Colors.black),
         ),
-        automaticallyImplyLeading: false,
         elevation: 0,
+        // Add the BackButton here for navigation
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context); // Pops the current page off the stack
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -163,4 +169,3 @@ class _BankAccountHomeState extends State<BankAccountHome> {
     );
   }
 }
-
