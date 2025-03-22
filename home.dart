@@ -1,5 +1,5 @@
 import 'package:financetalk07/News.dart';
-import 'package:financetalk07/Save_and_invest.dart';
+import 'package:financetalk07/Saveandinvest.dart';
 import 'package:flutter/material.dart';
 
 
@@ -104,7 +104,7 @@ class FinanceTalkHome extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text('Finance Planner'),
+                  child: Text('Financeplanner'),
                 ),
                 TextButton(
                   onPressed: () {
@@ -124,7 +124,7 @@ class FinanceTalkHome extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text('Save and Invest'),
+                  child: Text('Save_and_Invest'),
                 ),
                 financeFeatureTile(Icons.beach_access, 'Retirements'),
                 financeFeatureTile(Icons.account_balance_wallet, 'Wallet'),
