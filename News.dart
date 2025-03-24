@@ -1,85 +1,173 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() {
-  runApp(MaterialApp(
-    home: NewsPage(),
-  ));
+  runApp(FinanceNewsApp());
 }
 
-class NewsPage extends StatelessWidget {
+class FinanceNewsApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Finance News',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: FinanceNewsPage(),
+    );
+  }
+}
+
+class FinanceNewsPage extends StatefulWidget {
+  @override
+  _FinanceNewsPageState createState() => _FinanceNewsPageState();
+}
+
+class _FinanceNewsPageState extends State<FinanceNewsPage> {
+  final String apiKey =
+      '92da9144d32d418fa39004f2865b808a';
+  final String apiUrl = 'https://newsapi.org/v2/everything?q=finance&apiKey=';
+
+  List articles = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchFinanceNews();
+  }
+
+  Future<void> fetchFinanceNews() async {
+    final response = await http.get(Uri.parse('$apiUrl$apiKey'));
+
+    if (response.statusCode == 200) {
+      setState(() {
+        articles = json.decode(response.body)['articles'];
+        isLoading = false;
+      });
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      throw Exception('Failed to load news');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("News"),
-        backgroundColor: Colors.grey[400],
+        title: const Text('Finance News'),
+        centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : articles.isEmpty
+              ? const Center(
+                  child: Text(
+                    'No finance news available.',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                )
+              : ListView.builder(
+                  itemCount: articles.length,
+                  itemBuilder: (context, index) {
+                    var article = articles[index];
+                    return NewsCard(
+                      title: article['title'] ?? 'No Title',
+                      description: article['description'] ?? 'No Description',
+                      urlToImage: article['urlToImage'] ??
+                          'https://via.placeholder.com/150',
+                      url: article['url'],
+                    );
+                  },
+                ),
+    );
+  }
+}
+
+class NewsCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final String urlToImage;
+  final String url;
+
+  const NewsCard({
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.urlToImage,
+    required this.url,
+  }) : super(key: key);
+
+  void _openNewsUrl(BuildContext context, String url) {
+    // Add a webview or URL launcher logic here if needed
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Opening: $url')),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      elevation: 4,
+      child: InkWell(
+        onTap: () => _openNewsUrl(context, url),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Use ListView.builder for the news list
-            ListView.builder(
-              itemCount: newsData.length,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(), // Prevent ListView from scrolling independently
-              itemBuilder: (context, index) {
-                return NewsTile(
-                  newsText: newsData[index], // Displaying each news
-                );
-              },
+            ClipRRect(
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(12)),
+              child: Image.network(
+                urlToImage,
+                height: 180,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 180,
+                    width: double.infinity,
+                    color: Colors.grey[300],
+                    child: const Center(child: Icon(Icons.broken_image)),
+                  );
+                },
+              ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text(
+                description,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            const SizedBox(height: 8),
           ],
         ),
       ),
     );
   }
 }
-
-// NewsTile Widget for individual news item
-class NewsTile extends StatelessWidget {
-  final String newsText;
-
-  NewsTile({required this.newsText});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[300],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            radius: 25,
-            backgroundColor: Colors.grey,
-            child: Icon(Icons.person, color: Colors.white), // Placeholder icon for avatar
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              newsText,
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// Dummy data for the news items
-final List<String> newsData = [
-  'For long-term investors, time to be contrarian yet selective: 6 mid-cap stocks from different sectors with upside potential of up to 52%',
-  'Stock picks of the week: 5 stocks with consistent score improvement and upside potential of more than 37%',
-  'Staying bullish & volatility-ready is the solution: 7 large-caps from different sectors with an upside potential of up to 44%',
-  'Necessary pill for portfolio during volatility and Trump tariff wars: 8 pharma stocks with an upside potential of up to 48%',
-  'Stock Radar: MCX breaks out from double bottom pattern; should investors buy, sell or hold?',
-  'These mid-cap stocks with ‘strong buy’ & ‘buy’ recos can rally over 30%, according to analysts',
-  'These 6 banking stocks can give more than 27% returns in 1 year, according to analysts',
-  'Cannot be underperformers beyond a point: 7 stocks from different financial services segments, with upside potential of more than 42%',
-  'A little hard work in volatile times goes a long way in giving medium- to long-term returns: 5 small-caps that tick the right boxes',
-];
