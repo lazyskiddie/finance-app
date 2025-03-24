@@ -1,0 +1,29 @@
+name: financetalk07
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you want to publish the project
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # HTTP package for making API requests
+  http: ^0.13.3
+
+  # Flutter Secure Storage for securely storing API keys
+  flutter_secure_storage: ^4.2.1
+
+  # Flutter Dotenv for loading environment variables
+  flutter_dotenv: ^5.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
