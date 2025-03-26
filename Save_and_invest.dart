@@ -35,7 +35,7 @@ class SaveInvestPage extends StatelessWidget {
               iconPath: 'assets/stock_market.png',
               label: 'Stock Market',
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => StockMarketPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => StockApp()));
               },
             ),
             InvestmentOption(
