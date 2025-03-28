@@ -1,5 +1,7 @@
 import 'package:financetalk07/News.dart';
+import 'package:financetalk07/Profile.dart';
 import 'package:financetalk07/Saveandinvest.dart';
+import 'package:financetalk07/home2.dart';
 import 'package:flutter/material.dart';
 
 
@@ -29,7 +31,7 @@ class FinanceTalkHome extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) =>  Profilescreen(),
+                  builder: (context) =>  UserProfileScreen(),
                 )
               );
             },
@@ -110,7 +112,7 @@ class FinanceTalkHome extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => NewsPage(),
+                        builder: (context) => FinancePlannerPage(),
                       ),
                     );
                   },
@@ -120,11 +122,11 @@ class FinanceTalkHome extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) =>   SaveInvestPage(),
+                        builder: (context) => FinanceNewsApp(),
                       ),
                     );
                   },
-                  child: Text('Save_and_Invest'),
+                  child: Text('News'),
                 ),
                 financeFeatureTile(Icons.beach_access, 'Retirements'),
                 financeFeatureTile(Icons.account_balance_wallet, 'Wallet'),
@@ -292,6 +294,29 @@ class FinancePlannerPage extends StatelessWidget {
       ),
       body: Center(
         child: Text('Finance planner page'),
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FinanceNewsPage()),
+            );
+          },
+          child: Text('Go to Finance News'),
+        ),
       ),
     );
   }
