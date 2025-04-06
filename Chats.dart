@@ -11,8 +11,8 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chat"),
-        backgroundColor: Colors.grey[400],
+        title: Text("Chats"),
+        backgroundColor: Colors.grey[300],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -49,9 +49,9 @@ class ChatTile extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 1),
+        border: Border.all(color: Colors.black, width: 0.15),
         borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[300],
+        color: Colors.white,
       ),
       child: Row(
         children: [
