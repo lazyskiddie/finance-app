@@ -1,4 +1,5 @@
 import 'package:financetalk07/Accounts.dart';
+import 'package:financetalk07/schems.dart';
 import 'package:flutter/material.dart';
 import 'package:financetalk07/Chats.dart';
 import 'package:financetalk07/Financeplanner.dart';
@@ -35,7 +36,7 @@ class _FinanceTalkHomeState extends State<FinanceTalkHome> {
     ChatPage(),
     VideoPage(),
     BankAccountApp(),
-    Placeholder(), // Replace this with real Scheme screen
+    SchemesPage(), // Replace this with real Scheme screen
   ];
 
   bool _shouldShowAppBar(int index) {
@@ -152,7 +153,7 @@ class HomeScreenContent extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             children: [
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -162,7 +163,7 @@ class HomeScreenContent extends StatelessWidget {
                 },
                 child: Text('Gemini'),
               ),
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -170,9 +171,9 @@ class HomeScreenContent extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text('Financeplanner'),
+                child: Text('Finance planner'),
               ),
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -182,7 +183,7 @@ class HomeScreenContent extends StatelessWidget {
                 },
                 child: Text('Save & Invest'),
               ),
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -192,8 +193,26 @@ class HomeScreenContent extends StatelessWidget {
                 },
                 child: Text('News'),
               ),
-              financeFeatureTile(Icons.beach_access, 'Retirements'),
-              financeFeatureTile(Icons.account_balance_wallet, 'Wallet'),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => FinanceNewsApp(),
+                    ),
+                  );
+                },
+                child: Text('Retirements'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => FinanceNewsApp(),
+                    ),
+                  );
+                },
+                child: Text('Future Goals'),
+              ),
             ],
           ),
         ),
