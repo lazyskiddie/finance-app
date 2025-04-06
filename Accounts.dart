@@ -20,8 +20,6 @@ class BankAccountHome extends StatefulWidget {
 }
 
 class _BankAccountHomeState extends State<BankAccountHome> {
-  int _selectedIndex = 3; // Highlight the "Account" section by default
-
   final List<String> banks = [
     'Assam Gramin Vikash Bank',
     'State Bank of India',
@@ -37,12 +35,6 @@ class _BankAccountHomeState extends State<BankAccountHome> {
     'Canara Bank',
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +45,10 @@ class _BankAccountHomeState extends State<BankAccountHome> {
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
-        // Add the BackButton here for navigation
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.pop(context); // Pops the current page off the stack
+            Navigator.pop(context);
           },
         ),
       ),
@@ -77,6 +68,7 @@ class _BankAccountHomeState extends State<BankAccountHome> {
               ),
             ),
             SizedBox(height: 20),
+
             // Bank Logos Row
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -88,6 +80,7 @@ class _BankAccountHomeState extends State<BankAccountHome> {
               ],
             ),
             SizedBox(height: 20),
+
             Text(
               'All Banks',
               style: TextStyle(
@@ -96,7 +89,8 @@ class _BankAccountHomeState extends State<BankAccountHome> {
               ),
             ),
             SizedBox(height: 10),
-            // List of Banks with Circular Icons
+
+            // List of Banks
             Expanded(
               child: ListView.builder(
                 itemCount: banks.length,
@@ -138,33 +132,6 @@ class _BankAccountHomeState extends State<BankAccountHome> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.videocam),
-            label: 'Video',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.build),
-            label: 'Tools',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
       ),
     );
   }
