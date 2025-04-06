@@ -22,25 +22,29 @@ class NotificationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text(
           'Notification',
           style: TextStyle(color: Colors.black),
         ),
-        automaticallyImplyLeading: false,
         elevation: 0,
       ),
-      body: SingleChildScrollView( // Scroll effect for the entire page
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 20),
-              // Scrolling List of Notifications
               SizedBox(
-                height: 1000, // Adjust the height as needed
+                height: 1000,
                 child: ListView.builder(
-                  physics: BouncingScrollPhysics(), // Smooth scrolling effect
+                  physics: BouncingScrollPhysics(),
                   itemCount: notifications.length,
                   itemBuilder: (context, index) {
                     return Padding(
