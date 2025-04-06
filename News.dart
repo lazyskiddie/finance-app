@@ -1,3 +1,4 @@
+import 'package:financetalk07/home.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -26,8 +27,7 @@ class FinanceNewsPage extends StatefulWidget {
 }
 
 class _FinanceNewsPageState extends State<FinanceNewsPage> {
-  final String apiKey =
-      '92da9144d32d418fa39004f2865b808a';
+  final String apiKey = '92da9144d32d418fa39004f2865b808a';
   final String apiUrl = 'https://newsapi.org/v2/everything?q=finance&apiKey=';
 
   List articles = [];
@@ -61,6 +61,16 @@ class _FinanceNewsPageState extends State<FinanceNewsPage> {
       appBar: AppBar(
         title: const Text('Finance News'),
         centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => FinanceTalkHome(),
+              ),
+            ); // Navigates back to the previous screen
+          },
+        ),
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -103,7 +113,6 @@ class NewsCard extends StatelessWidget {
   }) : super(key: key);
 
   void _openNewsUrl(BuildContext context, String url) {
-    // Add a webview or URL launcher logic here if needed
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Opening: $url')),
     );
@@ -123,8 +132,7 @@ class NewsCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(12)),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
               child: Image.network(
                 urlToImage,
                 height: 180,
