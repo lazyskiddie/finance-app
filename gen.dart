@@ -30,9 +30,10 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<Map<String, String>> _messages = [];
   bool _isLoading = false;
 
-  final String apiKey = "AIzaSyDYRKaf6M6zrNoKKhdRQ2l8d3MepyYlhyg"; // Replace with your API key
-  final String model = "gemini-2.0-flash"; // Use a valid model
-  final String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDYRKaf6M6zrNoKKhdRQ2l8d3MepyYlhyg";
+  final String apiKey = "AIzaSyDYRKaf6M6zrNoKKhdRQ2l8d3MepyYlhyg";
+  final String model = "gemini-2.0-flash";
+  final String apiUrl =
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDYRKaf6M6zrNoKKhdRQ2l8d3MepyYlhyg";
 
   Future<void> _sendMessage() async {
     if (_controller.text.isEmpty) return;
@@ -60,7 +61,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        String botResponse = data["candidates"]?[0]?["content"]?["parts"]?[0]?["text"] ?? "Sorry, I couldn't generate a response.";
+        String botResponse = data["candidates"]?[0]?["content"]?["parts"]?[0]?["text"] ??
+            "Sorry, I couldn't generate a response.";
 
         setState(() {
           _messages.add({"bot": botResponse.trim()});
@@ -84,7 +86,15 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Gemini")),
+      appBar: AppBar(
+        title: const Text("Gemini"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // This enables back navigation
+          },
+        ),
+      ),
       body: Column(
         children: [
           Expanded(
