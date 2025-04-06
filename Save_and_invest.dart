@@ -1,4 +1,7 @@
 import 'package:financetalk07/Accounts.dart';
+import 'package:financetalk07/Ipo.dart';
+import 'package:financetalk07/Stock.dart';
+import 'package:financetalk07/crypto.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -42,7 +45,7 @@ class SaveInvestPage extends StatelessWidget {
               iconPath: 'assets/crypto_currency.png',
               label: 'Crypto Currency',
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => CryptoCurrencyPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => CryptoApp()));
               },
             ),
             InvestmentOption(
@@ -70,7 +73,7 @@ class SaveInvestPage extends StatelessWidget {
               iconPath: 'assets/ipo.png',
               label: 'IPO',
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => IPOPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => IPOScreen()));
               },
             ),
           ],
