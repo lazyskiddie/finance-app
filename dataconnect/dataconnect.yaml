@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "financetalk07"
+location: "asia-southeast1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcbd"
+      cloudSql:
+        instanceId: "financetalk07-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

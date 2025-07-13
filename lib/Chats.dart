@@ -11,8 +11,8 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chat"),
-        backgroundColor: Colors.grey[400],
+        title: Text("Chats"),
+        backgroundColor: Colors.grey[300],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -25,6 +25,7 @@ class ChatPage extends StatelessWidget {
                 return ChatTile(
                   name: chatData[index]['name'] ?? 'Unknown', // Check for null
                   pricePerMinute: chatData[index]['pricePerMinute'] ?? 'N/A', // Check for null
+                  status: chatData[index]['status'] ?? 'Offline', // Check for null
                 );
               },
             ),
@@ -38,8 +39,9 @@ class ChatPage extends StatelessWidget {
 class ChatTile extends StatelessWidget {
   final String name;
   final String pricePerMinute;
+  final String status;
 
-  ChatTile({required this.name, required this.pricePerMinute});
+  ChatTile({required this.name, required this.pricePerMinute, required this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +49,9 @@ class ChatTile extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 1),
+        border: Border.all(color: Colors.black, width: 0.15),
         borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[300],
+        color: Colors.white,
       ),
       child: Row(
         children: [
@@ -71,6 +73,11 @@ class ChatTile extends StatelessWidget {
                 pricePerMinute,
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
+              SizedBox(height: 5),
+              Text(
+                "Status: $status",
+                style: TextStyle(fontSize: 14, color: Colors.green),
+              ),
             ],
           ),
         ],
@@ -81,12 +88,12 @@ class ChatTile extends StatelessWidget {
 
 // Data of people available for chat
 final List<Map<String, String?>> chatData = [
-  {'name': 'Dhruv', 'pricePerMinute': '₹ 29/min'},
-  {'name': 'Jatin', 'pricePerMinute': '₹ 19/min'},
-  {'name': 'Shi', 'pricePerMinute': '₹ 39/min'},
-  {'name': 'John', 'pricePerMinute': '₹ 99/min'},
-  {'name': 'Taxak', 'pricePerMinute': '₹ 59/min'},
-  {'name': 'Tiona', 'pricePerMinute': '₹ 49/min'},
-  {'name': 'William Aird', 'pricePerMinute': '₹ 19/min'},
-  {'name': 'Nokhil', 'pricePerMinute': '₹ 29/min'},
+  {'name': 'Dhruv', 'pricePerMinute': '₹ 29/min', 'status': 'Online'},
+  {'name': 'Jatin', 'pricePerMinute': '₹ 19/min', 'status': 'Offline'},
+  {'name': 'Shi', 'pricePerMinute': '₹ 39/min', 'status': 'Busy'},
+  {'name': 'John', 'pricePerMinute': '₹ 99/min', 'status': 'Online'},
+  {'name': 'Taxak', 'pricePerMinute': '₹ 59/min', 'status': 'Offline'},
+  {'name': 'Tiona', 'pricePerMinute': '₹ 49/min', 'status': 'Online'},
+  {'name': 'William Aird', 'pricePerMinute': '₹ 19/min', 'status': 'Busy'},
+  {'name': 'Nokhil', 'pricePerMinute': '₹ 29/min', 'status': 'Online'},
 ];
