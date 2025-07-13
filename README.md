@@ -1,20 +1,14 @@
-<<<<<<< HEAD
 # financetalk
-=======
-# financetalk07
->>>>>>> f04fa7b (financetalk07)
 
-A new Flutter project.
+A cross-platform personal finance assistant app built using Flutter, integrating AI-powered features such as chat support, finance planner, stock & crypto insights, and personalized schemes.
 
-## Getting Started
+🫨Features
 
-This project is a starting point for a Flutter application.
+- Multi-platform support: Android, iOS, Web, macOS, Windows, Linux
+- AI-powered chat with Gemini API
+- Finance Planner and Investment Suggestions
+- Stock Market, Crypto, Mutual Funds, FD, Bonds, IPOs sections
+- Personalized Scheme Suggestions via www.myscheme.gov.in integration
+- User Profile, Notifications, and News updates
+- Firebase Authentication and Firestore Integration
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
