@@ -12,3 +12,23 @@ A cross-platform personal finance assistant app built using Flutter, integrating
 - User Profile, Notifications, and News updates
 - Firebase Authentication and Firestore Integration
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ⚙️ Setup Instructions
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 💡 Contribution Guide
+
+- Fork the repository
+1. Create your branch:
+- git checkout -b feature-name
+2. Commit your changes:
+- git commit -m "Add feature"
+3. Push to the branch:
+- git push origin feature-name
+4. Open a Pull Request
+ - Please ensure:
+- Code formatting using flutter format .
+- Running flutter analyze before submitting PRs.
