@@ -15,6 +15,9 @@ A cross-platform personal finance assistant app built using Flutter, integrating
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # ⚙️ Setup Instructions
+1.  Clone the Repository
+   git clone https://github.com/lazyskiddie/finance-app.git
+cd finance-app
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
