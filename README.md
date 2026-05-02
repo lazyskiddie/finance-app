@@ -1,3 +1,5 @@
+# Project is on hold, due to some problem. it will get solve fast.
+
 # financetalk
 
 A cross-platform personal finance assistant app built using Flutter, integrating AI-powered features such as chat support, finance planner, stock & crypto insights, and personalized schemes.
