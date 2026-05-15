@@ -27,7 +27,7 @@ class FinanceNewsPage extends StatefulWidget {
 }
 
 class _FinanceNewsPageState extends State<FinanceNewsPage> {
-  final String apiKey = '92da9144d32d418fa39004f2865b808a';
+  final String apiKey = 'enter_your_api';
   final String apiUrl = 'https://newsapi.org/v2/everything?q=finance&apiKey=';
 
   List articles = [];
