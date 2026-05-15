@@ -30,7 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<Map<String, String>> _messages = [];
   bool _isLoading = false;
 
-  final String apiKey = "AIzaSyDYRKaf6M6zrNoKKhdRQ2l8d3MepyYlhyg";
+  final String apiKey = "enter_your_api_key";
   final String model = "gemini-2.0-flash";
   final String apiUrl =
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDYRKaf6M6zrNoKKhdRQ2l8d3MepyYlhyg";
